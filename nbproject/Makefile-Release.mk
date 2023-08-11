@@ -39,7 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/empleados.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/productos.o \
-	${OBJECTDIR}/supermecado.o
+	${OBJECTDIR}/supermercado.o
 
 
 # C Compiler Flags
@@ -86,10 +86,10 @@ ${OBJECTDIR}/productos.o: productos.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/productos.o productos.cpp
 
-${OBJECTDIR}/supermecado.o: supermecado.cpp
+${OBJECTDIR}/supermercado.o: supermercado.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/supermecado.o supermecado.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/supermercado.o supermercado.cpp
 
 # Subprojects
 .build-subprojects:
