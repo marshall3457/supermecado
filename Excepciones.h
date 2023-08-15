@@ -12,15 +12,26 @@
 
 #ifndef EXCEPCIONES_H
 #define EXCEPCIONES_H
+#include <string>
+
+using namespace std;
 
 class Excepciones {
 public:
-    Excepciones();
-    Excepciones(const Excepciones& orig);
-    virtual ~Excepciones();
-private:
 
+    Excepciones(string message) :
+    message(message) {
+    }
+
+    virtual ~Excepciones();
+
+    string GetMessage() const {
+        return message;
+    }
+
+private:
+    string message;
 };
 
-#endif /* EXCEPCIONES_H */
+#endif
 

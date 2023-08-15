@@ -37,11 +37,33 @@ void supermercado::SetNombre(string nombre) {
 
 
 void supermercado::agregarNuevoEmpleado(empleados * empleadoNuevo){
+    list<empleados*>::iterator iterador = this->listaEmpleados->begin();
+    empleados * e = NULL;
+    while (iterador != this->listaEmpleados->end()) {
+        e = (* iterador);
+
+        // logica propia del método
+        if (empleadoNuevo->getDNI() == e->getDNI())
+            throw new Excepciones("El empleado ya se encuentra registrado");
+
+        iterador++;
+    }
     this->listaEmpleados->push_back(empleadoNuevo);
     
 }
 
 void supermercado::agregarNuevoProducto(productos * productoNuevo){
+    list<productos*>::iterator iterador = this->listaProductos->begin();
+    productos * e = NULL;
+    while (iterador != this->listaProductos->end()) {
+        e = (* iterador);
+
+        // logica propia del método
+        if (productoNuevo->GetId() == e->GetId())
+            throw new Excepciones("El producto ya se encuentra registrado");
+
+        iterador++;
+    }
     this->listaProductos->push_back(productoNuevo);
     
 }
@@ -54,6 +76,20 @@ void supermercado::eliminarEmpleado(string DNI) {
         
         if (e->getDNI() == DNI) {
             it = listaEmpleados->erase(it);  // Corrección: Borra el elemento y actualiza 'it'
+            delete e;  // Corrección: Libera la memoria del empleado
+            break;  // Corrección: Sale del bucle después de eliminar al empleado
+        }
+    }
+}
+
+void supermercado::eliminarProducto(string id) {
+    list<productos*>::iterator it = this->listaProductos->begin();
+    
+    for (; it != this->listaProductos->end(); ++it) {
+        productos * e = *it;  // Corrección: Debes obtener el puntero al empleado actual
+        
+        if (e->GetId() == id) {
+            it = listaProductos->erase(it);  // Corrección: Borra el elemento y actualiza 'it'
             delete e;  // Corrección: Libera la memoria del empleado
             break;  // Corrección: Sale del bucle después de eliminar al empleado
         }
@@ -73,6 +109,8 @@ empleados * supermercado::buscarEmpleado(string DNI){
             return e;
         }
     }
+    throw new Excepciones("No se encontro al empleado");
+
 }
 
 
@@ -88,6 +126,9 @@ productos * supermercado::buscarProducto(string id){
             return e;
         }
     }
+    
+    throw new Excepciones("No se encontro al producto");
+
 }
 
 

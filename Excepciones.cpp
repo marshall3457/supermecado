@@ -12,12 +12,6 @@
 
 #include "Excepciones.h"
 
-Excepciones::Excepciones() {
-}
-
-Excepciones::Excepciones(const Excepciones& orig) {
-}
-
 Excepciones::~Excepciones() {
 }
 

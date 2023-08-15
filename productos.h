@@ -37,6 +37,13 @@ public:
     string GetNombre();
 
     int GetPrecio();
+    
+    void SetId(string id);
+    
+    void SetNombre(string nombre);
+
+    void SetPrecio(int precio);
+
 
 
     

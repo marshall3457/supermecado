@@ -30,3 +30,16 @@ string productos::GetNombre()  {
 int productos::GetPrecio()  {
     return precio;
 }
+
+
+void productos::SetId(string id) {
+    this->id = id;
+}
+
+void productos::SetNombre(string nombre) {
+    this->nombre = nombre;
+}
+
+void productos::SetPrecio(int precio) {
+    this->precio = precio;
+}

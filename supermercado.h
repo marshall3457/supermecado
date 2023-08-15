@@ -14,6 +14,7 @@
 #include <list>
 #include "empleados.h"
 #include "productos.h"
+#include "Excepciones.h"
 
 #ifndef SUPERMERCADO_H
 #define SUPERMERCADO_H
