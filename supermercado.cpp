@@ -16,6 +16,16 @@ supermercado::supermercado(const supermercado& orig) {
 }
 
 supermercado::~supermercado() {
+
+    list<empleados*>::iterator it = this->listaEmpleados->begin();
+    for (; it != listaEmpleados->end(); it++)
+        delete (*it);
+    delete this->listaEmpleados;
+
+    list<productos*>::iterator it2 = this->listaProductos->begin();
+    for (; it2 != listaProductos->end(); it2++)
+        delete (*it2);
+    delete this->listaProductos;
 }
 
 list<empleados*>* supermercado::GetListaEmpleados()  {
@@ -68,32 +78,14 @@ void supermercado::agregarNuevoProducto(productos * productoNuevo){
     
 }
 
-void supermercado::eliminarEmpleado(string DNI) {
-    list<empleados*>::iterator it = this->listaEmpleados->begin();
-    
-    for (; it != this->listaEmpleados->end(); ++it) {
-        empleados * e = *it;  // Corrección: Debes obtener el puntero al empleado actual
-        
-        if (e->getDNI() == DNI) {
-            it = listaEmpleados->erase(it);  // Corrección: Borra el elemento y actualiza 'it'
-            delete e;  // Corrección: Libera la memoria del empleado
-            break;  // Corrección: Sale del bucle después de eliminar al empleado
-        }
-    }
+void supermercado::eliminarEmpleado(empleados * empleadoEliminar) {
+    this->listaEmpleados->remove(empleadoEliminar);
+
 }
 
-void supermercado::eliminarProducto(string id) {
-    list<productos*>::iterator it = this->listaProductos->begin();
-    
-    for (; it != this->listaProductos->end(); ++it) {
-        productos * e = *it;  // Corrección: Debes obtener el puntero al empleado actual
-        
-        if (e->GetId() == id) {
-            it = listaProductos->erase(it);  // Corrección: Borra el elemento y actualiza 'it'
-            delete e;  // Corrección: Libera la memoria del empleado
-            break;  // Corrección: Sale del bucle después de eliminar al empleado
-        }
-    }
+void supermercado::eliminarProducto(productos * productoEliminar) {
+    this->listaProductos->remove(productoEliminar);
+
 }
 
 

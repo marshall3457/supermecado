@@ -50,8 +50,8 @@ public:
     
     void agregarNuevoEmpleado(empleados * empleadoNuevo);
     void agregarNuevoProducto(productos * productoNuevo);
-    void eliminarEmpleado(string);
-    void eliminarProducto(string);
+    void eliminarEmpleado(empleados * empleadoEliminar);
+    void eliminarProducto(productos * productoEliminar);
     
     empleados * buscarEmpleado(string);
     productos * buscarProducto(string);

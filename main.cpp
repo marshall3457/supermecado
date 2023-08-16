@@ -49,7 +49,7 @@ int main() {
             cout << "3- Salir del programa" << endl;
             cin>>opcion;
 
-            if (!(opcion > 0 && opcion <= 3)) {
+            if (!(opcion > 0 && opcion < 4)) {
                 throw new Excepciones("Opcion no valida!");
 
             }
@@ -68,7 +68,11 @@ int main() {
                         cout << "7- volver al menu principal" << endl;
                         cout << "8- Salir del programa" << endl;
                         cin>>accion;
+                        
+                        if (!(accion > 0 && accion < 9)) {
+                            throw new Excepciones("Accion no valida!");
 
+                        }
                         if (accion == 1) {
                             string DNI;
                             cout << "Ingrese el DNI del usuario a buscar" << endl;
@@ -141,8 +145,10 @@ int main() {
                             cout << "Ingrese el DNI del empleado a eliminar" << endl;
                             cin>>DNI;
 
-                            nuevoSupermercado->eliminarEmpleado(DNI);
-
+                            empleados * empleadoEliminar = nuevoSupermercado->buscarEmpleado(DNI);
+                            
+                            nuevoSupermercado->eliminarEmpleado(empleadoEliminar);
+                            
                             cout << "Empleado eliminado con exito\n\n";
 
 
@@ -226,7 +232,12 @@ int main() {
                         cout << "6- Menu principal" << endl;
                         cout << "7- Salir del programa" << endl;
                         cin>>accion;
+                        
+                        if (!(accion > 0 && accion < 8)) {
+                            throw new Excepciones("Accion no valida!");
 
+                        }
+                        
                         if (accion == 1) {
                             string id;
                             cout << "Ingrese el id del producto" << endl;
@@ -262,8 +273,9 @@ int main() {
                             cout << "Ingrese el id del producto a eliminar" << endl;
                             cin>>id;
 
-                            nuevoSupermercado->eliminarProducto(id);
-
+                            productos * productoEliminar = nuevoSupermercado->buscarProducto(id);
+                            
+                            nuevoSupermercado->eliminarProducto(productoEliminar);
                             cout << "Producto eliminado con exito" << endl;
 
                         }
@@ -362,8 +374,10 @@ int main() {
 
 
 
-    // Finalmente, liberar el supermercado
+    //liberar el supermercado
     delete nuevoSupermercado;
+    
+    //liberar los empleados
     delete nuevoEmpleado;
     delete nuevoEmpleado1;
     delete nuevoEmpleado2;
